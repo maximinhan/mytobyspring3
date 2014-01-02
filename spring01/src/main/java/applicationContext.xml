@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- @bean은 <bean...으로, method name은 id로 리턴클래스는 class로 매칭된다.
+	<bean id="myConnectionMaker" class="springbook.user.dao.DConnectionMaker">
+	</bean>
+ 
+	<bean id="userDao" class="springbook.user.dao.UserDao">
+		setter 메소드가 name과 매칭되며 ref는 주입되는 클래스 이다.
+		<property name="connectionMaker" ref="myConnectionMaker" />
+	</bean>
+ 	-->
+	<!-- DaoFactory가 하던일을 위 Xml설정파일이 대체한다. 
+		전자의 빈으로 myConnectionMaker라는 메소드가 DConnectionMaker 커넥션을 가져와 후자의 빈 오브젝트에게 주입을 하여 준다. -->
+		
+		
+	<!-- 아래의 설정은 DataSource 인터페이스 전환시 사용되는 설정입니다.
+		DataSource 인터페이스 사용시 아래 코드의 주석을 풀고 위 코드를 주석 처리 하세요. -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://your.dbserver.org:3306/springbook?characterEncoding=UTF-8" />
+		<property name="username" value="yourID" />
+		<property name="password" value="yourPASS" />
+	</bean>
+
+	<bean id="userDao" class="springbook.user.dao.UserDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	-->
+</beans>
